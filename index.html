@@ -1,0 +1,577 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Psicóloga Dayane Silva. Atendimento psicológico online na Abordagem Centrada na Pessoa, com sessões pelo Google Meet.">
+<title>Psicóloga Dayane Silva</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..700&family=Figtree:wght@400;500;600&display=swap">
+<style>
+/* Layout: cabeçalho fixo leve; hero em duas colunas (texto + pausa de respiração); seções de leitura com painéis interativos */
+:root{
+  --bg:#F7F4FB;
+  --surface:#FFFFFF;
+  --fg:#2B2438;
+  --muted:#645C77;
+  --line:#E2DBEE;
+  --brand:#7458A8;
+  --brand-ink:#FFFFFF;
+  --soft:#ECE6F6;
+  --accent:#B49BDD;
+  --focus:#5E4294;
+  --font-display:'Bricolage Grotesque',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --font-body:'Figtree',system-ui,-apple-system,'Segoe UI',sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#16121F;--surface:#201A2D;--fg:#ECE7F6;--muted:#B2A8C8;--line:#372E4B;
+    --brand:#B8A0EA;--brand-ink:#1A1326;--soft:#2A2240;--accent:#8E73CC;--focus:#B8A0EA;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#16121F;--surface:#201A2D;--fg:#ECE7F6;--muted:#B2A8C8;--line:#372E4B;
+  --brand:#B8A0EA;--brand-ink:#1A1326;--soft:#2A2240;--accent:#8E73CC;--focus:#B8A0EA;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+body{
+  background:var(--bg);color:var(--fg);
+  font:400 17px/1.6 var(--font-body);
+  padding-block:0 3rem;
+  padding-left:max(16px,env(safe-area-inset-left,0px));
+  padding-right:max(16px,env(safe-area-inset-right,0px));
+}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+.wrap{max-width:1080px;margin:0 auto}
+h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:1.15;margin:0;text-wrap:balance;letter-spacing:-.01em}
+h1{font-size:clamp(2.1rem,5.2vw,3.5rem)}
+h2{font-size:clamp(1.55rem,3.4vw,2.1rem)}
+h3{font-size:1.2rem}
+p{margin:0}
+a{color:var(--brand)}
+:focus-visible{outline:3px solid var(--focus);outline-offset:3px;border-radius:6px}
+section{padding-block:3.5rem 0;scroll-margin-top:5rem}
+.lead{color:var(--muted);max-width:60ch;margin-top:.75rem}
+
+/* cabeçalho */
+header.top{
+  position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg);
+  border-bottom:1px solid var(--line);
+}
+header.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding-block:.8rem}
+.brand{display:inline-flex;align-items:center;gap:.7rem;font-family:var(--font-display);font-weight:600;font-size:1.15rem;line-height:1.1;text-decoration:none;color:var(--fg)}
+.mark{display:grid;place-items:center;flex:none;width:2.2rem;height:2.2rem;border-radius:50%;background:var(--brand);color:var(--brand-ink);font-family:var(--font-display);font-weight:600;font-size:1.2rem}
+.brand small{display:block;font-family:var(--font-body);font-weight:500;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:.15rem}
+nav.main{display:flex;gap:1.4rem;align-items:center}
+nav.main a{color:var(--fg);text-decoration:none;font-size:.95rem;font-weight:500}
+nav.main a:hover{color:var(--brand);text-decoration:underline;text-underline-offset:4px}
+@media (max-width:980px){nav.main a.plain{display:none}}
+
+/* botões */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:.5rem;
+  font:600 1rem/1 var(--font-body);padding:.85rem 1.25rem;border-radius:10px;
+  border:1.5px solid var(--brand);background:var(--brand);color:var(--brand-ink);
+  text-decoration:none;cursor:pointer;
+}
+.btn:hover{filter:brightness(1.08)}
+.btn.ghost{background:transparent;color:var(--brand)}
+.btn.small{padding:.6rem .95rem;font-size:.92rem}
+
+/* hero */
+.hero{padding-block:3rem 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,330px),1fr));gap:2.5rem;align-items:center}
+.hero>*{min-width:0}
+.hero p.sub{font-size:1.15rem;color:var(--muted);max-width:46ch;margin-top:1.1rem}
+.cta-row{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.75rem}
+.facts{display:flex;flex-wrap:wrap;gap:.5rem 1.5rem;margin:1.75rem 0 0;padding:0;list-style:none;color:var(--muted);font-size:.95rem}
+.facts li::before{content:"";display:inline-block;width:.5rem;height:.5rem;border-radius:50%;background:var(--accent);margin-right:.5rem}
+
+/* pausa de respiração */
+.pause{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:1.5rem;text-align:center}
+.pause h2{font-size:1.3rem}
+.pause p.small{color:var(--muted);font-size:.95rem;margin-top:.35rem}
+.stage{position:relative;width:min(250px,100%);aspect-ratio:1;margin:1.25rem auto}
+.ring{position:absolute;inset:0;border-radius:50%;border:2px dashed var(--line)}
+.orb{
+  position:absolute;inset:0;border-radius:50%;background:var(--soft);
+  border:3px solid var(--accent);
+  transform:scale(var(--s,.6));transition-property:transform;transition-timing-function:ease-in-out;transition-duration:4s;
+}
+.stage .count{
+  position:absolute;inset:0;display:grid;place-items:center;
+  font-family:var(--font-display);font-weight:600;font-size:2.6rem;color:var(--brand);
+  font-variant-numeric:tabular-nums;
+}
+.phase{min-height:1.6em;font-weight:600}
+.cycles{color:var(--muted);font-size:.9rem;min-height:1.4em;margin-bottom:1rem}
+
+/* assuntos */
+.chips{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.5rem}
+.chip{
+  font:500 .98rem/1.2 var(--font-body);padding:.6rem 1rem;border-radius:999px;cursor:pointer;
+  border:1.5px solid var(--line);background:var(--surface);color:var(--fg);
+}
+.chip:hover{border-color:var(--brand)}
+.chip[aria-pressed="true"]{background:var(--brand);border-color:var(--brand);color:var(--brand-ink)}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:1.6rem;margin-top:1.25rem;display:grid;gap:1rem}
+.panel ul{margin:0;padding-left:1.2rem;display:grid;gap:.4rem}
+.panel .note{color:var(--muted);font-size:.9rem}
+.panel .btn{justify-self:start}
+
+/* como funciona */
+.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.5rem;margin-top:1.5rem}
+.step{
+  display:flex;flex-direction:column;align-items:flex-start;gap:.4rem;text-align:left;cursor:pointer;
+  font:500 .92rem/1.2 var(--font-body);padding:.8rem .7rem;border-radius:12px;
+  border:1.5px solid var(--line);background:var(--surface);color:var(--fg);
+}
+.step .n{
+  display:grid;place-items:center;width:1.7rem;height:1.7rem;border-radius:50%;
+  background:var(--soft);color:var(--brand);font-weight:600;font-size:.9rem;
+}
+.step[aria-selected="true"]{border-color:var(--brand);box-shadow:inset 0 -3px 0 var(--accent)}
+.step[aria-selected="true"] .n{background:var(--brand);color:var(--brand-ink)}
+.step-body{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:1.6rem;margin-top:.75rem;display:grid;gap:.6rem}
+
+/* sobre */
+.about{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:2rem;margin-top:1.25rem}
+.about>*{min-width:0}
+.about p+p{margin-top:.9rem}
+dl.card{margin:0;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:1.2rem 1.4rem;display:grid;gap:.9rem;align-content:start}
+dl.card dt{font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
+dl.card dd{margin:.1rem 0 0}
+
+/* dúvidas */
+.faq{margin-top:1.5rem;max-width:760px}
+.faq details{border-top:1px solid var(--line)}
+.faq details:last-of-type{border-bottom:1px solid var(--line)}
+.faq summary{
+  cursor:pointer;list-style:none;padding:1rem 0;font-weight:600;
+  display:flex;justify-content:space-between;align-items:center;gap:1rem;
+}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-size:1.4rem;color:var(--brand);flex:none}
+.faq details[open] summary::after{content:"\2212"}
+.faq details p{padding:0 0 1.1rem;color:var(--muted);max-width:62ch}
+.crisis{
+  margin-top:1.5rem;max-width:760px;padding:1rem 1.2rem;border-radius:12px;
+  background:var(--soft);border:1px solid var(--line);
+}
+
+/* contato */
+.contact{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,330px),1fr));gap:2rem;margin-top:1.5rem;align-items:start}
+.contact>*{min-width:0}
+form.card,.preview{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:1.5rem}
+form.card{display:grid;gap:1rem}
+label{display:grid;gap:.35rem;font-weight:600;font-size:.95rem}
+input,select,textarea{
+  font:400 1rem/1.4 var(--font-body);padding:.7rem .8rem;border-radius:10px;width:100%;
+  border:1.5px solid var(--line);background:var(--bg);color:var(--fg);
+}
+textarea{min-height:5.5rem;resize:vertical}
+.hint{font-weight:400;color:var(--muted);font-size:.85rem}
+.err{color:#B3261E;font-weight:500;font-size:.9rem;min-height:1.2em}
+:root[data-theme="dark"] .err{color:#FFB4AB}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .err{color:#FFB4AB}}
+.preview h3{margin-bottom:.75rem}
+output.msg{display:block;white-space:pre-wrap;overflow-wrap:anywhere;background:var(--bg);border:1px dashed var(--line);border-radius:10px;padding:1rem;font-size:.98rem}
+.actions{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1rem}
+.status{min-height:1.4em;margin-top:.6rem;font-size:.92rem;color:var(--muted)}
+
+/* canais de contato */
+textarea::placeholder{color:var(--muted);opacity:.8}
+.channel{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.75rem;padding:.9rem 0;border-top:1px solid var(--line)}
+.channel .who{min-width:0}
+.channel .who strong{display:block}
+.channel .who span{color:var(--muted);overflow-wrap:anywhere}
+
+/* abordagem */
+.sec-head{display:flex;flex-wrap:wrap;gap:1.5rem 3rem;align-items:center}
+.sec-head>div{flex:1 1 340px;min-width:0}
+.sec-head + .lead{margin-top:1.75rem}
+.acp-art{flex:0 0 auto;width:190px;max-width:100%;height:auto}
+.acp-art .a{fill:var(--soft);stroke:var(--brand);stroke-width:2}
+.acp-art .b{fill:var(--accent);fill-opacity:.3;stroke:var(--accent);stroke-width:2.5}
+.acp-art text{font-family:var(--font-display);font-size:30px;font-weight:600;fill:var(--brand)}
+
+footer{margin-top:4rem;padding-top:1.5rem;border-top:1px solid var(--line);color:var(--muted);font-size:.9rem;display:grid;gap:.5rem}
+</style>
+<style>[hidden]{display:none!important}img{max-width:100%}</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#inicio"><span class="mark" aria-hidden="true">Ψ</span><span>Dayane Silva<small>Psicóloga</small></span></a>
+    <nav class="main" aria-label="Principal">
+      <a class="plain" href="#assuntos">Como posso ajudar</a>
+      <a class="plain" href="#abordagem">Abordagem</a>
+      <a class="plain" href="#como-funciona">Como funciona</a>
+      <a class="plain" href="#duvidas">Dúvidas</a>
+      <a class="btn small" href="#contato">Agendar conversa</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap" id="inicio">
+  <div class="hero">
+    <div>
+      <h1>Um espaço seguro para falar do que pesa.</h1>
+      <p class="sub">Atendimento psicológico online por videochamada, na Abordagem Centrada na Pessoa, com sigilo profissional e horários em <span data-horarios></span>.</p>
+      <div class="cta-row">
+        <a class="btn" href="#contato">Agendar uma conversa</a>
+        <a class="btn ghost" href="#como-funciona">Ver como funciona</a>
+      </div>
+      <ul class="facts">
+        <li>Online, de onde você estiver</li>
+        <li>Abordagem Centrada na Pessoa</li>
+        <li>Primeiro contato sem compromisso</li>
+      </ul>
+    </div>
+
+    <aside class="pause" aria-labelledby="pausa-t">
+      <h2 id="pausa-t">Pausa de 1 minuto</h2>
+      <p class="small">Respire no ritmo do círculo: 4 segundos para inspirar, 6 para soltar o ar.</p>
+      <div class="stage">
+        <div class="ring"></div>
+        <div class="orb" id="orb"></div>
+        <div class="count" id="count" aria-hidden="true"></div>
+      </div>
+      <p class="phase" id="phase" aria-live="polite">Pronto para começar?</p>
+      <p class="cycles" id="cycles"></p>
+      <button class="btn" id="breathBtn" type="button">Começar</button>
+    </aside>
+  </div>
+
+  <section id="assuntos" aria-labelledby="assuntos-t">
+    <h2 id="assuntos-t">O que te trouxe até aqui?</h2>
+    <p class="lead">Escolha o tema que mais se aproxima do seu momento. É só uma orientação para começar a conversa, não um diagnóstico.</p>
+    <div class="chips" id="chips" role="group" aria-label="Temas"></div>
+    <div class="panel" id="topicPanel" aria-live="polite"></div>
+  </section>
+
+  <section id="abordagem" aria-labelledby="acp-t">
+    <div class="sec-head">
+      <div>
+        <h2 id="acp-t">Abordagem Centrada na Pessoa</h2>
+        <p class="lead">A Abordagem Centrada na Pessoa (ACP) foi desenvolvida pelo psicólogo norte-americano Carl Rogers. Ela parte da ideia de que cada pessoa tem dentro de si recursos para crescer e se reorganizar, e de que esses recursos aparecem com mais facilidade dentro de uma relação de confiança.</p>
+        <p class="lead">Por isso, não trabalho com roteiro fixo nem com respostas prontas. Você define o que trazer e o ritmo, e eu caminho junto, com atenção e respeito.</p>
+      </div>
+      <svg class="acp-art" viewBox="0 0 170 110" role="img" aria-label="Dois círculos que se sobrepõem, simbolizando o encontro entre duas pessoas na terapia">
+        <circle class="a" cx="62" cy="55" r="42"/>
+        <circle class="b" cx="108" cy="55" r="42"/>
+        <text x="85" y="66" text-anchor="middle">Ψ</text>
+      </svg>
+    </div>
+    <p class="lead">Três atitudes sustentam esse cuidado. Toque em cada uma para ler.</p>
+    <div class="steps" role="tablist" aria-label="Atitudes da abordagem" id="acpTabs"></div>
+    <div class="step-body" id="acpBody" role="tabpanel" tabindex="0"></div>
+  </section>
+
+  <section id="como-funciona" aria-labelledby="func-t">
+    <h2 id="func-t">Como funciona o atendimento</h2>
+    <p class="lead">Três etapas, na ordem em que acontecem.</p>
+    <div class="steps" role="tablist" aria-label="Etapas do atendimento" id="steps"></div>
+    <div class="step-body" id="stepBody" role="tabpanel" tabindex="0"></div>
+  </section>
+
+  <section id="sobre" aria-labelledby="sobre-t">
+    <h2 id="sobre-t">Sobre mim</h2>
+    <div class="about">
+      <div>
+        <p>Sou psicóloga e atendo online. Minha trajetória inclui Recursos Humanos, o que me aproxima de queixas ligadas ao trabalho e à carreira, além das questões pessoais que chegam junto com elas.</p>
+        <p>Meu trabalho segue o Código de Ética Profissional do Psicólogo: sigilo, respeito ao seu tempo e clareza sobre como o atendimento acontece.</p>
+        <p>Também atendo pela Psymeet, plataforma de atendimento psicológico social. O contato feito por este site é direto comigo, sem a intervenção da plataforma, e as sessões acontecem pelo Google Meet.</p>
+      </div>
+      <dl class="card">
+        <div><dt>Modalidade</dt><dd>Online, por videochamada no Google Meet</dd></div>
+        <div><dt>Referencial</dt><dd>Abordagem Centrada na Pessoa</dd></div>
+        <div><dt>Horários</dt><dd data-horarios></dd></div>
+        <div id="crpRow" hidden><dt>Registro</dt><dd id="crpText"></dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section id="duvidas" aria-labelledby="duv-t">
+    <h2 id="duv-t">Dúvidas frequentes</h2>
+    <div class="faq">
+      <details open>
+        <summary>Como é uma sessão online?</summary>
+        <p>A sessão acontece por videochamada, pelo Google Meet. Você precisa de internet estável, fones de ouvido e um lugar onde possa falar com privacidade. Eu envio o link antes do horário combinado.</p>
+      </details>
+      <details>
+        <summary>Preciso assinar algum termo?</summary>
+        <p>Sim. Antes de começar, apresento o Termo de Consentimento Livre e Esclarecido (TCLE), que explica como o atendimento funciona, o sigilo e os combinados do processo. Você pode tirar dúvidas antes de aceitar.</p>
+      </details>
+      <details>
+        <summary>Como funciona o pagamento?</summary>
+        <p>O pagamento é feito antes da sessão. O valor e as formas de pagamento são informados no primeiro contato. Também trabalho com valor social, conforme cada situação.</p>
+      </details>
+      <details>
+        <summary>O que eu converso fica em sigilo?</summary>
+        <p>Sim. O sigilo é uma obrigação do Código de Ética da profissão. As exceções são situações previstas em lei ou de risco grave à vida, e eu explico isso com clareza no início.</p>
+      </details>
+      <details>
+        <summary>A terapia online é reconhecida?</summary>
+        <p>Sim. O atendimento psicológico mediado por tecnologia é regulamentado pelo Conselho Federal de Psicologia, com regras para o profissional e para a plataforma utilizada.</p>
+      </details>
+      <details>
+        <summary>Você também atende pela Psymeet?</summary>
+        <p>Sim. A Psymeet é uma plataforma de atendimento psicológico social, e também atendo por lá. O contato que você faz por este site é diferente: é direto comigo, sem a intervenção da plataforma, e a sessão acontece pelo Google Meet.</p>
+      </details>
+      <details>
+        <summary>E se eu estiver em crise agora?</summary>
+        <p>A terapia online não substitui atendimento de urgência. Se você está em sofrimento intenso ou pensando em se machucar, procure ajuda imediata, como indicado abaixo.</p>
+      </details>
+    </div>
+    <p class="crisis"><strong>Precisa de ajuda agora?</strong> Ligue 192 (SAMU) ou procure o CAPS, a UPA ou o pronto-socorro mais próximo.</p>
+  </section>
+
+  <section id="contato" aria-labelledby="cont-t">
+    <h2 id="cont-t">Vamos conversar?</h2>
+    <p class="lead">Escreva sua mensagem e escolha por onde enviar. Não precisa contar detalhes agora. Eles ficam para a primeira sessão.</p>
+    <div class="contact">
+      <div class="preview">
+        <h3 id="msgT">Sua mensagem</h3>
+        <textarea id="msg" name="msg" rows="5" maxlength="600" aria-labelledby="msgT" placeholder="Ex.: Olá! Gostaria de agendar uma consulta."></textarea>
+        <div class="actions">
+          <button class="btn" type="button" id="copyBtn">Copiar mensagem</button>
+        </div>
+        <p class="status" id="status" role="status"></p>
+        <p class="hint">Evite dados muito pessoais por aqui. Eles ficam para a primeira sessão. Esta página não envia nada: você escolhe o canal ao lado.</p>
+      </div>
+
+      <div class="preview">
+        <h3>Por onde enviar</h3>
+        <div class="channel" id="chWa" hidden>
+          <div class="who"><strong>WhatsApp</strong><span id="waText"></span></div>
+          <a class="btn small" id="waLink" href="#contato" target="_blank" rel="noopener">Abrir WhatsApp</a>
+        </div>
+        <div class="channel" id="chIg" hidden>
+          <div class="who"><strong>Instagram</strong><span id="igText"></span></div>
+          <a class="btn small ghost" id="igLink" href="#contato" target="_blank" rel="noopener">Abrir Instagram</a>
+        </div>
+        <p class="hint">No WhatsApp, a mensagem escrita ao lado vai junto. No Instagram, copie a mensagem e cole na conversa.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p><strong>Psicóloga Dayane Silva</strong><span id="footCrp"></span></p>
+    <p>Este site tem caráter informativo e não substitui avaliação ou atendimento psicológico. Em urgência, ligue 192 (SAMU).</p>
+  </footer>
+</main>
+
+<script>
+/* Dados editáveis do site. Deixe em branco o que ainda não tiver. */
+const CONFIG = {
+  whatsapp: "88999910300",   // só números, com DDD
+  instagram: "dayanesilva.psi",  // usuário sem @
+  crp: "",        // exemplo: 03/00000
+  horarios: "noites e sábados"
+};
+
+const reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const $ = (id) => document.getElementById(id);
+
+/* ---------- config ---------- */
+document.querySelectorAll("[data-horarios]").forEach(el => { el.textContent = CONFIG.horarios; });
+if (CONFIG.crp) {
+  $("crpRow").hidden = false;
+  $("crpText").textContent = "CRP " + CONFIG.crp;
+  $("footCrp").textContent = " · CRP " + CONFIG.crp;
+}
+
+/* ---------- pausa de respiração ---------- */
+(function(){
+  const orb = $("orb"), phase = $("phase"), count = $("count"), cycles = $("cycles"), btn = $("breathBtn");
+  const IN = 4, OUT = 6, TOTAL = 6;
+  let running = false, timer = null, tick = null, done = 0;
+
+  function countdown(sec){
+    clearInterval(tick);
+    let k = sec;
+    count.textContent = k;
+    tick = setInterval(() => {
+      k -= 1;
+      if (k > 0) count.textContent = k; else clearInterval(tick);
+    }, 1000);
+  }
+  function setScale(v, sec){
+    orb.style.transitionDuration = reduce ? "0s" : sec + "s";
+    orb.style.setProperty("--s", v);
+  }
+  function stop(msg){
+    running = false;
+    clearTimeout(timer); clearInterval(tick);
+    setScale(0.6, reduce ? 0 : 1);
+    count.textContent = "";
+    phase.textContent = msg;
+    btn.textContent = "Começar";
+  }
+  function round(){
+    if (!running) return;
+    phase.textContent = "Inspire pelo nariz";
+    cycles.textContent = "Respiração " + (done + 1) + " de " + TOTAL;
+    setScale(1, IN); countdown(IN);
+    timer = setTimeout(() => {
+      if (!running) return;
+      phase.textContent = "Solte o ar devagar";
+      setScale(0.6, OUT); countdown(OUT);
+      timer = setTimeout(() => {
+        done += 1;
+        if (done >= TOTAL) { stop("Pronto. Como você se sente agora?"); cycles.textContent = "Você completou " + TOTAL + " respirações."; }
+        else round();
+      }, OUT * 1000);
+    }, IN * 1000);
+  }
+  btn.addEventListener("click", () => {
+    if (running) { stop("Pausa interrompida. Volte quando quiser."); cycles.textContent = ""; return; }
+    running = true; done = 0; btn.textContent = "Parar";
+    round();
+  });
+})();
+
+/* ---------- temas ---------- */
+const TOPICS = [
+  { id:"ansiedade", chip:"Ansiedade e preocupação", short:"ansiedade e preocupação excessiva",
+    p:"Quando a mente não desliga, o corpo costuma acompanhar: sono leve, tensão, sensação de estar sempre em alerta. A terapia é um lugar para entender o que alimenta isso.",
+    li:["Identificar situações e pensamentos que aumentam a preocupação","Experimentar formas de cuidar do corpo e da rotina","Ter um espaço regular para falar sem julgamento"] },
+  { id:"trabalho", chip:"Cansaço com o trabalho", short:"estresse e cansaço com o trabalho",
+    p:"Pressão por resultado, jornadas longas e dúvidas de carreira também adoecem. Aqui o trabalho pode ser falado com a mesma seriedade que as outras áreas da vida.",
+    li:["Entender o que pesa na rotina e nas relações do trabalho","Pensar limites, descanso e escolhas de carreira","Lidar com cobrança, conflitos e sensação de esgotamento"] },
+  { id:"relacionamentos", chip:"Relacionamentos e família", short:"relacionamentos e família",
+    p:"Conflitos, distanciamentos e padrões que se repetem pedem tempo para serem olhados com cuidado.",
+    li:["Compreender como você se coloca nas relações","Preparar conversas difíceis","Pensar limites e expectativas"] },
+  { id:"autoestima", chip:"Autoestima e autocobrança", short:"autoestima e autocobrança",
+    p:"Quando a voz interna é dura demais, nada parece suficiente. Dá para olhar de onde ela vem e como suavizá-la.",
+    li:["Reconhecer a autocrítica e o que a sustenta","Construir uma relação mais gentil consigo","Enxergar conquistas e limites reais"] },
+  { id:"luto", chip:"Luto, perdas e mudanças", short:"luto, perdas ou mudanças importantes",
+    p:"Fim de relação, mudança de cidade, perda de alguém ou de um plano. Fases de transição mexem com quem somos e merecem acolhimento.",
+    li:["Dar nome ao que você sente, sem pressa","Atravessar a mudança com apoio","Reorganizar rotina e projetos"] },
+  { id:"naosei", chip:"Ainda não sei explicar", short:"algo que ainda não sei explicar bem",
+    p:"Tudo bem. Muita gente começa assim. A primeira conversa serve para colocar em palavras o que você está sentindo.",
+    li:["Sem roteiro pronto","Sem precisar ter um diagnóstico","Você decide o ritmo"] }
+];
+
+const chips = $("chips"), panel = $("topicPanel");
+TOPICS.forEach(t => {
+  const b = document.createElement("button");
+  b.type = "button"; b.className = "chip"; b.textContent = t.chip; b.dataset.id = t.id;
+  b.setAttribute("aria-pressed", "false");
+  b.addEventListener("click", () => showTopic(t.id));
+  chips.appendChild(b);
+});
+
+function showTopic(id){
+  const t = TOPICS.find(x => x.id === id) || TOPICS[0];
+  chips.querySelectorAll(".chip").forEach(c => c.setAttribute("aria-pressed", String(c.dataset.id === t.id)));
+  panel.replaceChildren();
+  const h = document.createElement("h3"); h.textContent = t.chip;
+  const p = document.createElement("p"); p.textContent = t.p;
+  const lead = document.createElement("p"); lead.innerHTML = "<strong>Na terapia, é possível:</strong>";
+  const ul = document.createElement("ul");
+  t.li.forEach(x => { const li = document.createElement("li"); li.textContent = x; ul.appendChild(li); });
+  const btn = document.createElement("button");
+  btn.type = "button"; btn.className = "btn"; btn.textContent = "Quero conversar sobre isso";
+  btn.addEventListener("click", () => {
+    $("contato").scrollIntoView({ behavior: reduce ? "auto" : "smooth" });
+    setTimeout(() => $("msg").focus({ preventScroll: true }), reduce ? 0 : 500);
+  });
+  const note = document.createElement("p"); note.className = "note";
+  note.textContent = "Esta lista não é um diagnóstico. Só uma avaliação profissional pode dizer o que está acontecendo com você.";
+  panel.append(h, p, lead, ul, btn, note);
+}
+showTopic(TOPICS[0].id);
+
+/* ---------- abas: etapas do atendimento e atitudes da ACP ---------- */
+function makeTabs(tabsEl, bodyEl, items, numbered){
+  function show(i){
+    tabsEl.querySelectorAll(".step").forEach((b, k) => {
+      b.setAttribute("aria-selected", String(k === i));
+      b.tabIndex = k === i ? 0 : -1;
+    });
+    const s = items[i];
+    bodyEl.replaceChildren();
+    const h = document.createElement("h3"); h.textContent = s.title;
+    const p = document.createElement("p"); p.textContent = s.text;
+    bodyEl.append(h, p);
+  }
+  items.forEach((s, i) => {
+    const b = document.createElement("button");
+    b.type = "button"; b.className = "step"; b.setAttribute("role", "tab");
+    const n = document.createElement("span"); n.className = "n"; n.textContent = numbered ? String(i + 1) : "Ψ";
+    const l = document.createElement("span"); l.textContent = s.tab;
+    b.append(n, l);
+    b.addEventListener("click", () => show(i));
+    b.addEventListener("keydown", (e) => {
+      let k = i;
+      if (e.key === "ArrowRight") k = (i + 1) % items.length;
+      else if (e.key === "ArrowLeft") k = (i + items.length - 1) % items.length;
+      else return;
+      e.preventDefault(); show(k); tabsEl.children[k].focus();
+    });
+    tabsEl.appendChild(b);
+  });
+  show(0);
+}
+
+makeTabs($("steps"), $("stepBody"), [
+  { tab:"Contato", title:"Primeira mensagem",
+    text:"Você escreve uma mensagem curta na área de contato desta página e envia direto para mim. Não precisa explicar tudo agora. A ideia é combinar um horário e tirar suas dúvidas sobre o atendimento." },
+  { tab:"Acolhimento", title:"Primeira sessão",
+    text:"O encontro acontece por videochamada, pelo Google Meet. Eu envio o link antes do horário. No começo, explico como o atendimento funciona e apresento o Termo de Consentimento (TCLE). Depois, você conta o que te trouxe e definimos juntos como seguir." },
+  { tab:"Rotina", title:"Acompanhamento",
+    text:"Quando faz sentido para você continuar, os encontros costumam ser semanais, no mesmo dia e horário. A frequência pode ser ajustada conforme cada caso." }
+], true);
+
+makeTabs($("acpTabs"), $("acpBody"), [
+  { tab:"Congruência", title:"Congruência",
+    text:"Eu me relaciono com você de forma inteira e verdadeira, sem me esconder atrás de um papel de especialista distante. Essa autenticidade ajuda a construir confiança." },
+  { tab:"Aceitação", title:"Aceitação positiva incondicional",
+    text:"Há acolhimento, sem julgamento, para tudo o que você trouxer, inclusive os sentimentos que parecem difíceis de dizer. Aceitar não é concordar com tudo. É criar segurança para você olhar para si com mais liberdade." },
+  { tab:"Empatia", title:"Compreensão empática",
+    text:"Busco compreender o mundo a partir do seu ponto de vista, com atenção ao que você sente e ao sentido que as experiências têm para você." }
+], false);
+
+/* ---------- contato ---------- */
+const msg = $("msg"), statusEl = $("status");
+
+(function(){
+  if (CONFIG.whatsapp) {
+    const d = CONFIG.whatsapp.replace(/\D/g, "");
+    $("waText").textContent = "(" + d.slice(0, 2) + ") " + d.slice(2, 7) + "-" + d.slice(7);
+    $("chWa").hidden = false;
+  }
+  if (CONFIG.instagram) {
+    const u = CONFIG.instagram.replace(/^@/, "");
+    $("igText").textContent = "@" + u;
+    $("igLink").href = "https://instagram.com/" + u;
+    $("chIg").hidden = false;
+  }
+})();
+
+function updateWa(){
+  if (!CONFIG.whatsapp) return;
+  const d = CONFIG.whatsapp.replace(/\D/g, "");
+  const t = msg.value.trim();
+  $("waLink").href = "https://wa.me/55" + d + (t ? "?text=" + encodeURIComponent(t) : "");
+}
+msg.addEventListener("input", () => { updateWa(); statusEl.textContent = ""; });
+updateWa();
+
+async function copyText(text){
+  try { await navigator.clipboard.writeText(text); return true; } catch (e) { /* tenta o plano B */ }
+  try { msg.focus(); msg.select(); return document.execCommand("copy"); } catch (e) { return false; }
+}
+$("copyBtn").addEventListener("click", async () => {
+  const t = msg.value.trim();
+  if (!t) { statusEl.textContent = "Escreva sua mensagem antes de copiar."; msg.focus(); return; }
+  const ok = await copyText(t);
+  statusEl.textContent = ok ? "Mensagem copiada. Cole no seu aplicativo de mensagens." : "Não consegui copiar sozinha. Selecione o texto e copie.";
+});
+</script>
+
+</body>
+</html>
